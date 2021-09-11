@@ -10,10 +10,10 @@ namespace Sportiga.Models
     
         public class ApplicationUser : IdentityUser
         {
-            public string FullName { get; set; }
+         public string FullName { get; set; }
         public DateTime? RegisterDate { get; set; }
            
-            public string ContactNumber { get; set; }
+         public string ContactNumber { get; set; }
         public List<Articles> Articles { get; set; }
 
     }

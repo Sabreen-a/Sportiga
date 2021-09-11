@@ -94,6 +94,19 @@ namespace Sportiga.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProjectRole",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectRole", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Socialmedias",
                 columns: table => new
                 {
@@ -346,6 +359,9 @@ namespace Sportiga.Migrations
 
             migrationBuilder.DropTable(
                 name: "Contacts");
+
+            migrationBuilder.DropTable(
+                name: "ProjectRole");
 
             migrationBuilder.DropTable(
                 name: "Socialmedias");

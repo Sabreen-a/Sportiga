@@ -33,10 +33,12 @@ namespace Sportiga
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
-
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddControllersWithViews();
+            services.AddIdentity<IdentityUser,IdentityRole>()
+                           .AddEntityFrameworkStores<ApplicationDbContext>()
+                           .AddDefaultTokenProviders();
 
             services.AddIdentityCore<ApplicationUser>().AddRoles<IdentityRole>()
                 .AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<ApplicationUser, IdentityRole>>()
@@ -44,6 +46,16 @@ namespace Sportiga
                 .AddDefaultTokenProviders()
                 .AddDefaultUI();
 
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    // Cookie settings
+            //    options.Cookie.HttpOnly = true;
+            //    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+            //    options.LoginPath = "/Identity/Account/Login";
+            //    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+            //    options.SlidingExpiration = true;
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +79,7 @@ namespace Sportiga
 
             app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

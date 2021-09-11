@@ -337,6 +337,21 @@ namespace Sportiga.Migrations
                     b.ToTable("Keywords");
                 });
 
+            modelBuilder.Entity("Sportiga.Models.ProjectRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("RoleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProjectRole");
+                });
+
             modelBuilder.Entity("Sportiga.Models.Socialmedia", b =>
                 {
                     b.Property<int>("ID")

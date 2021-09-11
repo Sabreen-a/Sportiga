@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Sportiga.Models;
 using Sportiga.ViewModelComponant;
+using Sportiga.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication2.Areas.Admin.Controllers
 {
@@ -14,12 +16,13 @@ namespace WebApplication2.Areas.Admin.Controllers
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _UserManagerr;
-       
+        private readonly ApplicationDbContext _Context;
 
-        public CreateRole(RoleManager<IdentityRole> roleManager,UserManager<ApplicationUser> UserManagerr)
+        public CreateRole(RoleManager<IdentityRole> roleManager,UserManager<ApplicationUser> UserManagerr, ApplicationDbContext Context)
         {
             _roleManager =roleManager;
             _UserManagerr =UserManagerr;
+            _Context = Context;
         }
         public IActionResult Index()
         {
@@ -28,20 +31,38 @@ namespace WebApplication2.Areas.Admin.Controllers
         }
         public IActionResult Create()
         {
-            
-            return View();
+            ViewBag.roles = _roleManager.Roles.OrderBy(s=> s.Id).ToList();
+                return View();
         }
 
         [HttpPost]
        
         public async Task <IActionResult> Create(ProjectRole role)
         {
-            var roleExists = await _roleManager.RoleExistsAsync(role.RoleName);
-            if (!roleExists)
+            try
             {
-                var result = await _roleManager.CreateAsync(new IdentityRole(role.RoleName));
+
+            if(role != null)
+            {
+
+                var roleExists = await _roleManager.RoleExistsAsync(role.RoleName);
+                if (!roleExists)
+                {
+                    var result = await _roleManager.CreateAsync(new IdentityRole(role.RoleName));
+                }
+                return RedirectToAction("Create");
             }
-            return View();
+            else
+            {
+                return RedirectToAction("Create");
+
+            }
+            }
+            catch 
+            {
+                return RedirectToAction("Create");
+
+            }
         }
 
         [HttpGet]
@@ -51,18 +72,21 @@ namespace WebApplication2.Areas.Admin.Controllers
             ViewBag.Users = _UserManagerr.Users.ToList();
 
             ViewBag.Roles = _roleManager.Roles.ToList();
+
+            ViewBag.UserRole = _Context.UserRoles.ToList();
             return View();
         }
 
-        public async Task<IActionResult> SaveRole(UserRoleModel userModel)
+        public async Task<IActionResult> SaveRole(string UserId, string roleId)
         {
-            ApplicationUser user = await _UserManagerr.FindByNameAsync(userModel.UserId);
-           var  role = await _roleManager.FindByNameAsync(userModel.RoleId);
+            ApplicationUser user = await _UserManagerr.FindByNameAsync(UserId);
+           var  role = await _roleManager.FindByNameAsync(roleId);
           
           await  _UserManagerr.AddToRoleAsync(user,role.ToString());
-
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("AssignRoleToUser", "CreateRole");
         }
+
+      
 
     }
 }

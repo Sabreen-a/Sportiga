@@ -10,8 +10,8 @@ using Sportiga.Data;
 namespace Sportiga.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210910132601_initialcreate2")]
-    partial class initialcreate2
+    [Migration("20210910214238_sportiga")]
+    partial class sportiga
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -337,6 +337,21 @@ namespace Sportiga.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Keywords");
+                });
+
+            modelBuilder.Entity("Sportiga.Models.ProjectRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("RoleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProjectRole");
                 });
 
             modelBuilder.Entity("Sportiga.Models.Socialmedia", b =>
