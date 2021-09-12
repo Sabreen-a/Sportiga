@@ -5,37 +5,38 @@
     Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
 }
 
-    @section Customscripts{ 
-<script>
-    $(document).ready(function () {
+@section Customscripts{
+    <script>
+        $(document).ready(function () {
 
 
-        $('.table .AddRole').on('click', function () {
+            $('.table .AddRole').on('click', function () {
 
-            var UserName = $(this).parent().find('.UserName').val();
-            $('#AddRole #UserId').val(UserName);
+                var UserName = $(this).parent().find('.UserName').val();
+                $('#AddRole #UserId').val(UserName);
 
-         
+
+
+            });
+
 
         });
 
-
-    });
-
-</script>
+    </script>
 }
 <div class="card">
     <div class="card-header d-flex justify-content-start align-items-center ">
         <h3 class="card-title"></h3>
-        <button class=" btn  bg-success" >
+        <button class=" btn  bg-success">
 
             <i class="fa fa-plus mr-1"> </i>
-            <a href="/Identity/Account/register"></a>
-            Add New User
+            <a href="/Identity/Account/register">
+                Add New User
+            </a>
         </button>
 
     </div>
-     @*/.card-header*@ 
+    @*/.card-header*@
     <div class="card-body">
 
 
@@ -63,21 +64,21 @@
                             <td>
                                 @foreach (var user in ViewBag.UserRole)
                                 {
-                                    if(item.Id == user.UserId)
+                                    if (item.Id == user.UserId)
                                     {
                                         var roleId = user.RoleId;
-                                        foreach(var role in ViewBag.Roles)
+                                        foreach (var role in ViewBag.Roles)
                                         {
-                                            if(role.Id == roleId)
+                                            if (role.Id == roleId)
                                             {
-                                                <span style="text-transform:capitalize"> @role.Name <b>|</b> </span> 
+                                                <span style="text-transform:capitalize"> @role.Name <b>|</b> </span>
                                             }
                                         }
                                     }
                                 }
                             </td>
                             <td>
-                                <button class=" btn badge bg-warning AddRole"  data-toggle="modal" data-target="#AddRole">
+                                <button class=" btn badge bg-warning AddRole" data-toggle="modal" data-target="#AddRole">
                                     Add Role
                                 </button>
                                 <button class=" btn badge bg-primary update" data-toggle="modal" data-target="#updateUSer">
@@ -86,7 +87,7 @@
                                 <button class=" btn badge bg-danger delete" data-toggle="modal" data-target="#deleteUser">
                                     Delete
                                 </button>
-                                <input type="hidden" value="@item.UserName"  class="UserName" />
+                                <input type="hidden" value="@item.UserName" class="UserName" />
                             </td>
                         </tr>
                         i = i + 1;
@@ -96,7 +97,7 @@
             </tbody>
         </table>
     </div>
-     @*/.card-body*@ 
+    @*/.card-body*@
     <div class="card-footer clearfix">
         <ul class="pagination pagination-sm m-0 float-right">
             <li class="page-item"><a class="page-link" href="#">«</a></li>
@@ -112,7 +113,7 @@
 
 
 
- Add Role To User
+
 <div class=" modal fade" id="AddRole">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -123,7 +124,7 @@
                 </button>
             </div>
 
-            <form  asp-action="SaveRole">
+            <form asp-action="SaveRole">
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="control-label">Username</label>
@@ -145,6 +146,7 @@
         </div>
 
     </div>
-</div>
+</div>Add Role To User
+
 
 

@@ -2,9 +2,11 @@
 @{
     ViewData["Title"] = "SocialMedia";
     Layout = "~/Areas/Admin/Shared/_Layout.cshtml";
+    @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 }
 
-@model Sportiga.Models.Categories
+@model Sportiga.Models.Socialmedia
 
 @section Styles
 {
@@ -109,7 +111,7 @@
     </style>
 }
 
-@section Customscripts{
+@section Scripts{
     <script>
         $(document).ready(function () {
 
@@ -117,7 +119,7 @@
             $('table .delete').on('click', function () {
 
                 var id = $(this).parent().find('.id').val();
-                $('#deleteSection #id').val(id);
+                $('#deleteSocialMedia #id').val(id);
 
             });
 
@@ -128,11 +130,12 @@
                 $.ajax({
 
                     type: 'GET',
-                    url: '/Admin/Dashboard/find/' + id,
-                    success: function (category) {
+                    url: '/admin/dashboard/findSocialMedia/' + id,
+                    success: function (socialMedial) {
 
-                        $('#updateSection #id').val(category.id);
-                        $('#updateSection #name').val(category.name);
+                        $('#updateSocialMedia #id').val(socialMedial.id);
+                        $('#updateSocialMedia #name').val(socialMedial.name);
+                        $('#updateSocialMedia #link').val(socialMedial.link);
                     }
 
                 })
@@ -147,9 +150,9 @@
 <div class="card">
     <div class="card-header d-flex justify-content-start align-items-center ">
         <h3 class="card-title"></h3>
-        <button class=" btn  bg-success" data-target="#addSection" data-toggle="modal">
+        <button class=" btn  bg-success" data-target="#addSocialMedia" data-toggle="modal">
             <i class="fa fa-plus mr-1"> </i>
-            Add New Section
+            Add New Social Media Link
         </button>
 
     </div>
@@ -162,25 +165,23 @@
                 <tr>
                     <th style="width: 10px">#</th>
                     <th>Name</th>
-                    <th>Number of Articles</th>
+                    <th>Link</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in ViewBag.categories)
+                @foreach (var item in ViewBag.Social)
                 {
 
                     <tr>
                         <td>@item.ID</td>
                         <td>@item.Name</td>
+                        <td>@item.Link</td>
                         <td>
-                            <span class="badge bg-warning">1</span>
-                        </td>
-                        <td>
-                            <button class=" btn badge bg-primary update" data-toggle="modal" data-target="#updateSection">
+                            <button class=" btn badge bg-primary update" data-toggle="modal" data-target="#updateSocialMedia">
                                 Update
                             </button>
-                            <button class=" btn badge bg-danger delete" data-toggle="modal" data-target="#deleteSection">
+                            <button class=" btn badge bg-danger delete" data-toggle="modal" data-target="#deleteSocialMedia">
                                 Delete
                             </button>
                             <input type="hidden" value="@item.ID" class="id" />
@@ -205,22 +206,27 @@
 
 <!-- Create Modal -->
 
-<div class=" modal fade" id="addSection">
+<div class=" modal fade" id="addSocialMedia">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="AddSectionLabel"> Add New Section </h4>
+                <h4 class="modal-title" id="AddSectionLabel"> Add New Social Media </h4>
                 <button type="button" class="close" data-dismiss="modal">
                     <span class="text-muted">x</span>
                 </button>
             </div>
 
-            <form method="post" asp-controller="dashboard" asp-action="createSection">
+            <form method="post" asp-controller="dashboard" asp-action="createSocialMedia">
                 <div class="modal-body">
                     <div class="form-group">
                         <label asp-for="Name"></label>
-                        <input type="text" asp-for="Name" class="form-control" />
+                        <input type="text" asp-for="Name" class="form-control" required />
                         <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Link"></label>
+                        <input type="url" asp-for="Link" class="form-control" required />
+                        <span asp-validation-for="Link" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -236,23 +242,27 @@
 
 
 <!-- Update Modal -->
-
-<div class=" modal fade" id="updateSection">
+<div class=" modal fade" id="updateSocialMedia">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="AddSectionLabel"> Change Section Name </h4>
+                <h4 class="modal-title" id="AddSectionLabel"> Change Social Media </h4>
                 <button type="button" class="close" data-dismiss="modal">
                     <span class="text-muted">x</span>
                 </button>
             </div>
 
-            <form method="post" asp-controller="dashboard" asp-action="updateSection">
+            <form method="post" asp-controller="dashboard" asp-action="updateSocialMedia">
                 <div class="modal-body">
                     <div class="form-group">
                         <label asp-for="Name"></label>
                         <input type="text" id="name" name="name" class="form-control" />
                         <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Link"></label>
+                        <input type="text" id="link" name="link" class="form-control" />
+                        <span asp-validation-for="Link" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">
@@ -267,10 +277,10 @@
 </div>
 
 <!-- Delete Modal -->
-<div id="deleteSection" class="modal fade">
+<div id="deleteSocialMedia" class="modal fade">
     <div class="modal-dialog modal-confirm">
         <div class="modal-content">
-            <form method="post" asp-controller="dashboard" asp-action="deleteSection">
+            <form method="post" asp-controller="dashboard" asp-action="deleteSocialMedia">
                 <div class="modal-header flex-column">
                     <div class="icon-box">
                         <i class="fas fa-times"></i>
