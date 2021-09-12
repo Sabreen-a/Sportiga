@@ -1,26 +1,34 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Sportiga.Data;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Sportiga.Models;
+using Sportiga.ViewModelComponant;
+using Sportiga.Data;
+using Microsoft.AspNetCore.Authorization;
 namespace Sportiga.Areas.Admin.Controllers
 {
     [Area("Admin")]
 
     public class Articles : Controller
     {
-        private ApplicationDbContext context;
-        public Articles(ApplicationDbContext _context)
+        private readonly UserManager<ApplicationUser> _UserManagerr;
+        private readonly ApplicationDbContext _Context;
+
+        public Articles(UserManager<ApplicationUser> UserManagerr, ApplicationDbContext Context, UserManager<ApplicationUser> userManagerr)
         {
-            context = _context;
+            _Context = Context;
+            _UserManagerr = userManagerr;
         }
+
         [HttpGet]
         public IActionResult Index(int id)
         {
-            var articles = context.Articles.Where(d => d.categoryId == id && d.Status == "approved").Select(s => s).ToList();
-            return View(articles);
+            ViewBag.articles = _Context.Articles.Where(d => d.categoryId == id && d.Status == "approved").Select(s => s).ToList();
+            ViewBag.Users = _UserManagerr.Users.ToList();
+            return View();
         }
     }
 }
