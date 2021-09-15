@@ -4,5 +4,524 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+@section style{
+<style>
+   
+</style>
+}
+@section script{
+    <script>
+       
+        $(document).ready(function () {
+            $(window).on('load', function () {
+            
+                document.querySelectorAll("#custCarousel .carousel-inner .carousel-item")[0].classList.add("active");
+                document.querySelectorAll("#custCarousel .carousel-indicators .list-inline-item")[0].classList.add("active");
+       
+        });
 
+    })
+    </script>
+}
+<section class="FirstSider">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
+                    <!-- slides -->
+                    <div class="carousel-inner">
+                        @foreach (var item in ViewBag.lastArticles)
+                        {
+                            <div class="carousel-item ">
+                                <img src="~/images/@item.Image" alt="Hills">
+                                <div class="carousel-caption caption-custom">
+                                    <a href="/Home/essay/@item.ID">
+                                    <h3 >
+                                        @item.Title
+                                    </h3>
+                                    </a>
+                                </div>
+                            </div>
+
+                        }
+                    </div> <!-- Left right -->
+                    <ol class="carousel-indicators list-inline">
+                        @{ var i = 0;
+                            foreach (var item in ViewBag.lastArticles)
+                            {
+                                <li class="list-inline-item ">
+                                    <a  id="carousel-selector-@i" class="selected" data-slide-to="@i" data-target="#custCarousel">
+                                        <img src="~/images//@item.Image" class="img-fluid">
+                                    </a>
+                                </li>
+
+                                i = i + 1;
+                            }
+                        }
+                    </ol>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+
+        </div>
+    </div>
+
+
+
+</section>
+
+<section class="elmogz">
+</section>
+
+<section class="FirstSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 ">
+                <div class="block">
+
+                    <div class="title">
+                        <a href="/category/3" title="حوادث">
+                            <h2> حوادث </h2>
+                        </a>
+                    </div>
+
+                    <div class="content">
+                        <div class="item-card">
+                            <a href="#">
+                                <div class="content-img">
+                                    <img src="https://i.imgur.com/weXVL8M.jpg" width="450" height="253" />
+                                </div>
+                                <div class="content-text">
+                                    <h3>
+                                        تنفيذ عمليات إرهابية ضد الدولة.. محاكمة المتهمين بـ « خلية الوايلى »
+                                    </h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-card">
+                                    <a href="#">
+                                        <div class="content-img ss">
+                                            <img src="https://i.imgur.com/weXVL8M.jpg" width="213" height="119" />
+                                        </div>
+                                        <div class="content-text">
+                                            <h3>
+                                                تنفيذ عمليات إرهابية ضد الدولة.. محاكمة المتهمين بـ « خلية الوايلى »
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="col-6">
+                                <div class="item-card">
+                                    <a href="#">
+                                        <div class="content-img ss">
+                                            <img src="https://i.imgur.com/weXVL8M.jpg" width="213" height="119" />
+                                        </div>
+                                        <div class="content-text">
+                                            <h3>
+                                                تنفيذ عمليات إرهابية ضد الدولة.. محاكمة المتهمين بـ « خلية الوايلى »
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="foot">
+                        <a href="#" class="more" title="">المزيد</a>
+                    </div>
+                </div><!--./block-->
+            </div>
+
+
+            <div class="col-12 col-md-6 ">
+                <div class="block">
+
+                    <div class="title">
+                        <a href="/category/3" title="حوادث">
+                            <h2> حوادث </h2>
+                        </a>
+                    </div>
+
+                    <div class="content">
+                        <div class="item-card">
+                            <a href="#">
+                                <div class="content-img">
+                                    <img src="https://i.imgur.com/weXVL8M.jpg" width="450" height="253" />
+                                </div>
+                                <div class="content-text">
+                                    <h3>
+                                        تنفيذ عمليات إرهابية ضد الدولة.. محاكمة المتهمين بـ « خلية الوايلى »
+                                    </h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-card">
+                                    <a href="#">
+                                        <div class="content-img ss">
+                                            <img src="https://i.imgur.com/weXVL8M.jpg" width="213" height="119" />
+                                        </div>
+                                        <div class="content-text">
+                                            <h3>
+                                                تنفيذ عمليات إرهابية ضد الدولة.. محاكمة المتهمين بـ « خلية الوايلى »
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="col-6">
+                                <div class="item-card">
+                                    <a href="#">
+                                        <div class="content-img ss">
+                                            <img src="https://i.imgur.com/weXVL8M.jpg" width="213" height="119" />
+                                        </div>
+                                        <div class="content-text">
+                                            <h3>
+                                                تنفيذ عمليات إرهابية ضد الدولة.. محاكمة المتهمين بـ « خلية الوايلى »
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="foot">
+                        <a href="#" class="more" title="">المزيد</a>
+                    </div>
+                </div><!--./block-->
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<section class="secondSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="block " >
+                    <div class="title">
+                        <a href="/category/4" title="اقتصاد واتصالات">
+                            <h2> اقتصاد واتصالات </h2>
+                        </a>
+                    </div>
+                    <div class="content">
+                        <div class="item-card">
+                            <a href="/1369569/القاهرة-24-يكشف-تفاصيل-اجتماع-المطورين-العقاريين-برئيس-الوزارء">
+                                <div class="content-img">
+                                    <img class=" lazyloaded" src="https://i.imgur.com/weXVL8M.jpg"  width="740" height="416" alt="">
+                                </div>
+                                <div class="content-text">
+                                    <h3>
+                                        «القاهرة 24» يكشف تفاصيل اجتماع المطورين العقاريين برئيس الوزراء
+                                    </h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-12">
+                                <div class="item-li  ">
+                                    <a href="/1369551/أتش-سي-عودة-السياحة-الروسية-خفضت-ضغوط-أسعار-الفائدة-على-الجنيه" title="">
+                                        <div class="content-img">
+                                            <img class=" ls-is-cached lazyloaded" src="https://i.imgur.com/weXVL8M.jpg" data-src="/UploadCache/libfiles/44/6/400x225o/549.jpg" alt="">
+                                        </div>
+                                        <div class="content-text">
+                                            <h3>
+                                                أتش سي: عودة السياحة الروسية خفضت ضغوط أسعار الفائدة على الجنيه
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-12">
+                                <div class="item-li  ">
+                                    <a href="/1369604/أسعار-الأسمنت-اليوم-في-مصر-الاثنين-13-9-2021" title="">
+                                        <div class="content-img">
+                                            <img class=" ls-is-cached lazyloaded" src="https://i.imgur.com/weXVL8M.jpg" data-src="/UploadCache/libfiles/45/7/400x225o/221.jpeg" alt="">
+                                        </div>
+                                        <div class="content-text">
+                                            <h3>
+                                                أسعار الأسمنت اليوم في مصر الاثنين 13-9-2021
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-12">
+                                <div class="item-li  ">
+                                    <a href="/1369597/أسعار-الحديد-اليوم-في-مصر-13-9-2021" title="">
+                                        <div class="content-img">
+                                            <img class=" lazyloaded" src="https://i.imgur.com/weXVL8M.jpg" data-src="/UploadCache/libfiles/45/7/400x225o/215.jpeg" alt="">
+                                        </div>
+                                        <div class="content-text">
+                                            <h3>
+                                                أسعار الحديد اليوم في مصر 13-9-2021
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="foot">
+                        <a href="/category/4" class="more" title="اقتصاد واتصالات">المزيد</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="block    " ord="id=12&amp;top=4">
+                    <div class="title">
+                        <a href="/category/12" title="تقارير وتحقيقات">
+                            <h2> تقارير وتحقيقات </h2>
+                        </a>
+                    </div>
+                    <div class="content">
+                        <div class="item-card">
+                            <a href="/1369302/بعد-حادث-الساحل-الشمالي-أبرز-المعلومات-عن-برنامج-رصد-أسماك-القرش">
+                                <div class="content-img">
+                                    <img class=" lazyloaded" src="https://i.imgur.com/weXVL8M.jpg" data-src="/UploadCache/libfiles/45/6/400x225o/689.jpg" width="740" height="416" alt="">
+                                </div>
+                                <div class="content-text">
+                                    <h3>
+                                        بعد حادث الساحل الشمالي.. أبرز المعلومات عن برنامج رصد أسماك القرش
+                                    </h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-12">
+                                <div class="item-li  ">
+                                    <a href="/1369502/بعد-إصابة-غواص-بالساحل-الشمالي-كيف-تفكر-سمكة-القرش-عندما-تهاجم-فريستها" title="">
+                                        <div class="content-img">
+                                            <img class=" lazyloaded" src="https://i.imgur.com/weXVL8M.jpg" data-src="/UploadCache/libfiles/45/7/400x225o/80.jfif" alt="">
+                                        </div>
+                                        <div class="content-text">
+                                            <h3>
+                                                بعد إصابة غواص بالساحل الشمالي.. كيف تفكر سمكة القرش عندما تهاجم فريستها؟
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-12">
+                                <div class="item-li  ">
+                                    <a href="/1369461/بعد-حادث-الساحل-الشمالي-خريطة-تواجد-سمكة-القرش-في-مصر" title="">
+                                        <div class="content-img">
+                                            <img class=" lazyloaded" src="https://i.imgur.com/weXVL8M.jpgg" data-src="https://i.imgur.com/weXVL8M.jpg" alt="">
+                                        </div>
+                                        <div class="content-text">
+                                            <h3>
+                                                بعد حادث الساحل الشمالي.. خريطة تواجد سمكة القرش في مصر
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-12">
+                                <div class="item-li  ">
+                                    <a href="/1369392/الإقبال-على-تناول-الخضروات-والفاكهة-كيف-غيرت-جائحة-كورونا-من-عادات-المصريين-الغذائية" title="">
+                                        <div class="content-img">
+                                            <img class=" lazyloaded" src="https://i.imgur.com/weXVL8M.jpg" data-src="/UploadCache/libfiles/26/1/400x225o/910.jpg" alt="">
+                                        </div>
+                                        <div class="content-text">
+                                            <h3>
+                                                الإقبال على تناول الخضروات والفاكهة.. كيف غيرت جائحة كورونا من عادات المصريين الغذائية؟
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="foot">
+                        <a href="/category/12" class="more" title="تقارير وتحقيقات">المزيد</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="block    " ord="id=192215&amp;top=4">
+                    <div class="title">
+                        <a href="/category/192215" title="محافظات">
+                            <h2> محافظات </h2>
+                        </a>
+                    </div>
+                    <div class="content">
+                        <div class="item-card">
+                            <a href="/1369619/شقيق-شهيد-الشهامة-بالمنوفية-كان-بيموت-وبيدافع-عني-من-البلطجية│-فيديو">
+                                <div class="content-img">
+                                    <img class=" lazyloaded" src="https://i.imgur.com/weXVL8M.jpg" data-src="/UploadCache/libfiles/45/7/400x225o/229.jpg" width="740" height="416" alt="">
+                                </div>
+                                <div class="content-text">
+                                    <h3>
+                                        شقيق شهيد الشهامة بالمنوفية: كان بيموت وبيدافع عني من البلطجية│ فيديو
+                                    </h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-12">
+                                <div class="item-li  ">
+                                    <a href="/1369617/القبض-على-3-مسجلين-استولوا-على-توك-توك-عامل-بسوهاج" title="">
+                                        <div class="content-img">
+                                            <img class=" lazyloaded" src="https://i.imgur.com/weXVL8M.jpg" data-src="/UploadCache/libfiles/42/7/400x225o/749.jpg" alt="">
+                                        </div>
+                                        <div class="content-text">
+                                            <h3>
+                                                القبض على 3 مسجلين استولوا على توك توك عامل بسوهاج
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-12">
+                                <div class="item-li  ">
+                                    <a href="/1369501/بيان-لمدرستي-الصم-والبكم-بقنا-يدين-واقعة-الزج-بأسماء-مديريها-في-قضية-هتك-عرض-طفلين-يتمتعان-بسمعة-طيبة" title="">
+                                        <div class="content-img">
+                                            <img class=" lazyloaded" src="https://i.imgur.com/weXVL8M.jpg" data-src="/UploadCache/libfiles/38/8/400x225o/165.jpg" alt="">
+                                        </div>
+                                        <div class="content-text">
+                                            <h3>
+                                                بيان لمدرستي الصم والبكم بقنا يدين واقعة الزج بأسماء مديريها في قضية هتك عرض طفلين: يتمتعان بسمعة طيبة
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-12">
+                                <div class="item-li  ">
+                                    <a href="/1369519/مبيت-باب-للتسول-تحذير-من-لقطة-افتراش-عامل-لرصيف-بالإسكندرية-لإطعام-القطط" title="">
+                                        <div class="content-img">
+                                            <img class=" lazyloaded" src="https://i.imgur.com/weXVL8M.jpg" data-src="/UploadCache/libfiles/45/7/400x225o/119.jpg" alt="">
+                                        </div>
+                                        <div class="content-text">
+                                            <h3>
+                                                مبيت.. «باب للتسول».. تحذير من لقطة افتراش عامل لرصيف بالإسكندرية لإطعام القطط
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="foot">
+                        <a href="/category/192215" class="more" title="محافظات">المزيد</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="thirdSection">
+    <div class="container">
+        <div class="block ">
+            <div class="title">
+                <a href="/category/6" title="فن">
+                    <h2> فن </h2>
+                </a>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 ">
+                        <div class="item-card   ">
+                            <a href="/1369503/نسرين-طافش-بنصح-الجمهور-بالاستماع-للمهرجانات-في-حالة-إصابتهم-بالاكتئاب">
+                                <div class="content-img">
+                                    <img class=" ls-is-cached lazyloaded" src="https://i.imgur.com/weXVL8M.jpg" data-src="/UploadCache/libfiles/31/7/400x225o/452.jpg" width="740" height="416" alt="">
+                                </div>
+                                <div class="content-text">
+                                    <h3>
+                                        نسرين طافش: بنصح الجمهور بالاستماع للمهرجانات في حالة إصابتهم بالاكتئاب
+                                    </h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 ">
+                        <div class="item-card   ">
+                            <a href="/1369349/رامي-صبري-يروج-لأغنية-أنتي-بتهزري">
+                                <div class="content-img">
+                                    <img class=" lazyloaded" src="https://i.imgur.com/weXVL8M.jpg" data-src="/UploadCache/libfiles/45/6/400x225o/781.png" width="740" height="416" alt="">
+                                </div>
+                                <div class="content-text">
+                                    <h3>
+                                        رامي صبري يروج لأغنية «أنتي بتهزري»
+                                    </h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 ">
+                        <div class="item-card   ">
+                            <a href="/1369558/نسرين-طافش-تسافر-دبي-من-أجل-فيلم-في-القلب-مع-خالد-سليم">
+                                <div class="content-img">
+                                    <img class=" lazyloaded" src="/UploadCache/libfiles/45/7/400x225o/110.jpeg" data-src="/UploadCache/libfiles/45/7/400x225o/110.jpeg" width="740" height="416" alt="">
+                                </div>
+                                <div class="content-text">
+                                    <h3>
+                                        نسرين طافش تسافر دبي من أجل فيلم في القلب مع خالد سليم
+                                    </h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 ">
+                        <div class="item-card   ">
+                            <a href="/1369610/انطلاق-الدورة-الرابعة-لـ-أيام-القاهرة-الدولي-للمونودراما-اليوم-تونس-ضيف-شرف">
+                                <div class="content-img">
+                                    <img class=" ls-is-cached lazyloaded" src="/UploadCache/libfiles/45/7/400x225o/227.jfif" data-src="/UploadCache/libfiles/45/7/400x225o/227.jfif" width="740" height="416" alt="">
+                                </div>
+                                <div class="content-text">
+                                    <h3>
+                                        انطلاق الدورة الرابعة لمهرجان أيام القاهرة الدولي للمونودراما اليوم..&nbsp;تونس ضيف شرف
+                                    </h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 ">
+                        <div class="item-card   ">
+                            <a href="/1369310/نجوى-كرم-تحيي-ثاني-حفلات-مهرجان-جرش-23-سبتمبر">
+                                <div class="content-img">
+                                    <img class=" lazyloaded" src="/UploadCache/libfiles/45/6/400x225o/700.jpg" data-src="/UploadCache/libfiles/45/6/400x225o/700.jpg" width="740" height="416" alt="">
+                                </div>
+                                <div class="content-text">
+                                    <h3>
+                                        نجوى كرم تحيي ثاني حفلات مهرجان جرش 23 سبتمبر
+                                    </h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 ">
+                        <div class="item-card   ">
+                            <a href="/1369607/الإعلامي-أحمد-سالم-ينضم-لفريق-عمل-مسلسل-دليلك-الذكي-إلى-الطلاق">
+                                <div class="content-img">
+                                    <img class=" lazyloaded" src="/UploadCache/libfiles/45/7/400x225o/225.jpeg" data-src="/UploadCache/libfiles/45/7/400x225o/225.jpeg" width="740" height="416" alt="">
+                                </div>
+                                <div class="content-text">
+                                    <h3>
+                                        الإعلامي أحمد سالم ينضم لفريق عمل مسلسل دليلك الذكي إلى الطلاق
+                                    </h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="foot">
+                <a href="/category/6" class="more" title="فن">المزيد</a>
+            </div>
+        </div>
+    </div>
+</section>

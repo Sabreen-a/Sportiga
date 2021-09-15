@@ -24,50 +24,160 @@
     <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.css">
-    <link rel="stylesheet" href="~/SiteFiles/HomeStyle.css">
-
+    <!-- Layout Custome Style-->
+    <link rel="stylesheet" href="~/SiteCss/LayOutStyle.css">
+    <!-- Home Style -->
+    <link rel="stylesheet" href="~/SiteCss/Home.css">
+    @*<link rel="stylesheet" href="~/SiteCss/Home.scss">*@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    @RenderSection("style")
+
 </head>
 <body>
 
+    <style>
+           .navbar {
+          padding:0rem;
+          margin-bottom:2rem;
+        }
+
+        .dropdown .dropdown-menu {
+          border-radius:0;
+         }
+        .navbar-nav{
+            overflow:hidden;
+        }
+        /* Medium devices (tablets, 768px and up)
+        The navbar toggle appears at this breakpoint */
+        @@media (min-width: 768px) {
+            .dropdown:hover .dropdown-menu {
+                display: block;
+                margin-top: 0;
+                border-radius: 0;
+            }
+        }
+    </style>
 
     <header>
-        <nav class="navbar navbar-expand navCustom flex-row-reverse">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item  burger-icon-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class=" burger-icon fas fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
 
-            </ul>
+        <a class="navbar-brand ml-3" href="#">
+            <span class="">BootstrapCreative </span>
+        </a>
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+            <!-- One of the primary actions on mobile is to call a business - This displays a phone button on mobile only -->
+            <div class="navbar-toggler-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+
+
+
+            <div class="collapse navbar-collapse flex-column " id="navbar">
+
+                <ul class="navbar-nav  w-106 justify-content-center px-3">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">الرئيسية<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">كرة مصرية<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">كرة عربية<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">كرة عالمية<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">نجوم كرة القدم<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">ميركاتو<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">رياضات أخرى<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">تقارير وحوارات<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">أقلام حرة<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">تحقيقات صحفية<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">سبورتيجا لايت<span class="sr-only">(current)</span></a>
+                    </li>
+                  
+                    <li class="nav-item dropdown" style="font-size:25px">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">تقارير وحورات</a>
+                            <a class="dropdown-item" href="#">تحقيقات صحفية</a>
+                            <a class="dropdown-item" href="#">أقلام حرة</a>
+                            <a class="dropdown-item" href="#">فيديوهات</a>
+                            <a class="dropdown-item" href="#">سبورتيجا لايت</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+
+
+            </div>
 
         </nav>
     </header>
+
 
     <section>
 
         @RenderBody()
     </section>
-    @RenderSection("Scripts", required: false)
+    <!-- jQuery -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="~/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/plugins/moment/moment.min.js"></script>
+    <script src="~/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/dist/js/pages/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/dist/js/demo.js"></script>
+    <!-- Home JS-->
+    <script src="~/SiteJS/Home.js"></script>
+    @RenderSection("script", required: false)
 </body>
 </html>
 

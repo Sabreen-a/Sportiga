@@ -35,10 +35,10 @@ namespace Sportiga
 
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
-            //services.AddControllersWithViews();
             services.AddIdentity<IdentityUser,IdentityRole>()
                            .AddEntityFrameworkStores<ApplicationDbContext>()
                            .AddDefaultTokenProviders();
+            services.AddControllersWithViews();
 
             services.AddIdentityCore<ApplicationUser>().AddRoles<IdentityRole>()
                 .AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<ApplicationUser, IdentityRole>>()
